@@ -15,15 +15,19 @@
           <button @click="pushButton('red')" type="button" class="w-24 h-24 rounded-full bg-red-400"></button>
         </div>
       </div>
+      <div>
+        <pre>{{ error }}</pre>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
+const error = ref("");
 const pushButton = (name) => {
   $fetch("http://raspberrypi.local:8989/buttons", {
     body: { key: "1", name },
     method: "POST",
-  });
+  }).catch((err) => (error.value = err.data));
 };
 </script>
