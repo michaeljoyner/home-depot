@@ -25,7 +25,7 @@
 <script setup>
 const error = ref("");
 const pushButton = (name) => {
-  $fetch("http://raspberrypi.local:8989/buttons", {
+  $fetch("http://192.168.0.101:8989/buttons", {
     body: { key: "1", name },
     method: "POST",
   }).catch((err) => (error.value = err.data));
